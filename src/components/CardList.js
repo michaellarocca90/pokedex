@@ -10,13 +10,18 @@ class CardList extends Component {
 
     }
   }
+
+
   render(){
     if (this.props.appData.isLoading) {
       return null
     } else {
-    console.log(this.props)
+    const pokemonList = this.props.appData.pokemonInfo
+    console.log(pokemonList)
     return(
-        <DataCard pokemon={this.props.appData.pokemonInfo}/>
+        pokemonList.map(pokemon => {
+          return <DataCard pokemon={pokemon}/>
+        })
     )
   }}
 }

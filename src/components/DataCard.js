@@ -25,32 +25,36 @@ const styles = {
     marginBottom: 12,
   },
 };
+// render the modal with a fetch request for the pokemons individual details.
+// const renderDetailsModal = () => {
+// const url = https://pokeapi.co/
+//  fetch(`${url}{pokemon.resource_uri}`, {
+  // method: "GET",
+  // headers: {
+  //   "Content-Type": "application/json"
+  // }})
+  // .then(res => res.json())
+  // .then(data => {
+  //   this.setState({pokemonInfo: data.pokemon, isLoading: false});
+  // })
+  // .catch(err => console.log(err));
+// }
 
 function DataCard(props) {
-  console.log(props)
   const { classes } = props;
-  const pokemon = props.pokemon || {}
-
+  const displayName = `${props.pokemon.name.substr(0, 1).toUpperCase()}${props.pokemon.name.substr(1)}`
   return (
     <div>
       <Card className={classes.card}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary">
-            <ImageAvatar sprites={pokemon.sprites}/>
           </Typography>
           <Typography variant="headline" component="h2">
-            {pokemon.name}
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography component="p">
-            well meaning and kindly.<br />
-            {'"a benevolent smile"'}
+            {displayName}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Learn More</Button>
+          <Button onClick={renderDetailsModal} size="small">Learn More</Button>
         </CardActions>
       </Card>
     </div>

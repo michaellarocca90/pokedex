@@ -12,17 +12,18 @@ class App extends Component {
       isLoading: true
     }
   }
+  // https://pokeapi.co/api/v2/pokemon/${1}/
 
 //this url returns a list with an id and a name, map through the list and return a datacard that has fetched pkmon info
   componentWillMount(){
-    fetch(`https://pokeapi.co/api/v2/pokemon/${1}/`, {
+    fetch(`https://pokeapi.co/api/v1/pokedex/1/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
       }})
       .then(res => res.json())
       .then(data => {
-        this.setState({pokemonInfo: data, isLoading: false});
+        this.setState({pokemonInfo: data.pokemon, isLoading: false});
       })
       .catch(err => console.log(err));
   }
