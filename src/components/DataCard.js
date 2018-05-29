@@ -25,24 +25,12 @@ const styles = {
     marginBottom: 12,
   },
 };
-// render the modal with a fetch request for the pokemons individual details.
-// const renderDetailsModal = () => {
-// const url = https://pokeapi.co/
-//  fetch(`${url}{pokemon.resource_uri}`, {
-  // method: "GET",
-  // headers: {
-  //   "Content-Type": "application/json"
-  // }})
-  // .then(res => res.json())
-  // .then(data => {
-  //   this.setState({pokemonInfo: data.pokemon, isLoading: false});
-  // })
-  // .catch(err => console.log(err));
-// }
+
+
 
 function DataCard(props) {
   const { classes } = props;
-  const displayName = `${props.pokemon.name.substr(0, 1).toUpperCase()}${props.pokemon.name.substr(1)}`
+  const displayName = `${props.dataAndHandler.pokemon.name.substr(0, 1).toUpperCase()}${props.dataAndHandler.pokemon.name.substr(1)}`
   return (
     <div>
       <Card className={classes.card}>
@@ -54,7 +42,7 @@ function DataCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={renderDetailsModal} size="small">Learn More</Button>
+          <Button onClick={props.dataAndHandler.handleClick(pokemon.resource_uri)} size="small">PokeInfo</Button>
         </CardActions>
       </Card>
     </div>

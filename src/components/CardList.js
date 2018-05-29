@@ -11,6 +11,23 @@ class CardList extends Component {
     }
   }
 
+  const handleClick = (uri) => {
+      const url = 'https://pokeapi.co/'
+      fetch(`${url}${uri}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }})
+      .then(res => res.json())
+      .then(data => {
+        let singlePokemon = data
+      })
+      .catch(err => console.log(err));
+  }
+
+  const renderModal = (singlePokemon) => {
+    <DetailsModalWrapped />
+  }
 
   render(){
     if (this.props.appData.isLoading) {
@@ -19,9 +36,13 @@ class CardList extends Component {
     const pokemonList = this.props.appData.pokemonInfo
     console.log(pokemonList)
     return(
+      <div>
+        {renderModal}
         pokemonList.map(pokemon => {
-          return <DataCard pokemon={pokemon}/>
+          const dataAndHandler = {pokemon: pokemon, handleClick: handleClick}
+          return <DataCard dataAndHandler={dataAndHandler}/>
         })
+      <div>
     )
   }}
 }
